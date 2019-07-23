@@ -2,6 +2,7 @@ package com.eventoapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,7 +31,7 @@ public class EventoController {
         return mv;
     }
     
-    @RequestMapping(value="/listarEventos")
+    @RequestMapping(value = "/listarEventos")
     public ModelAndView listar() {
     	ModelAndView mv = new ModelAndView();
     	mv.setViewName("evento/listaEventos");
@@ -39,5 +40,13 @@ public class EventoController {
     	return mv;
     }
     
+    @RequestMapping(value = "/evento/detalhes/{id}")
+    public ModelAndView detalhesEvento(@PathVariable("id") long id) {
+    	ModelAndView mv = new ModelAndView();
+    	Evento Evento = eventoRepository.findById(id);
+    	mv.setViewName("evento/detalhesEvento");
+    	mv.addObject("evento", Evento);
+    	return mv;
+    }
     
 }
