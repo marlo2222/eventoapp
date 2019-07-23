@@ -25,9 +25,18 @@ public class EventoController {
     @RequestMapping(value = "/cadastrarEvento", method = RequestMethod.POST)
     public ModelAndView form(Evento evento){
     	ModelAndView mv = new ModelAndView();
-    	mv.setViewName("redirect:/cadastrarEvento");
+    	mv.setViewName("redirect:/listarEventos");
     	eventoRepository.save(evento);
         return mv;
+    }
+    
+    @RequestMapping(value="/listarEventos")
+    public ModelAndView listar() {
+    	ModelAndView mv = new ModelAndView();
+    	mv.setViewName("evento/listaEventos");
+    	Iterable<Evento> eventos = eventoRepository.findAll(); 
+    	mv.addObject("eventos", eventos);
+    	return mv;
     }
     
     
