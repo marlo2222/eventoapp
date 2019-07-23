@@ -1,10 +1,14 @@
 package com.eventoapp.models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -25,6 +29,8 @@ public class Evento {
     private String local;
     private String data;
     private String horario;
+    @OneToMany(mappedBy = "evento", fetch = FetchType.EAGER)
+    private List<Convidado> convidado;
     
     public long getId() {
 		return id;
@@ -56,8 +62,5 @@ public class Evento {
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
-    
-    
-
-
+	
 }

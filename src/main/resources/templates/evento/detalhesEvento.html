@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Evento</title>
+	 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet"/>
+	 
+</head>
+<body>
+	<div class="container"> 
+		<h1>Lista de Eventos</h1>
+		<h3><a class="waves-effect waves-light btn" href="/listarEventos"><i class="material-icons left">assignment</i>Lista de Eventos</a></h3>
+		<div th:each="evento : ${evento}">
+			<div class="row">
+				<p><spam th:text="${evento.nome}"></spam></p>
+				<p><spam th:text="${evento.local}"></spam></p>
+				<p><spam th:text="${evento.data}"></spam></p>
+				<p><spam th:text="${evento.horario}"></spam></p>
+			</div>
+			<form method="post">
+				Nome:<input type="text" value="" name="nomeConvidado"/>
+				Rg:<input type="text" value="" name= "rg"/>
+				<button class="btn waves-effect waves-light" type="submit">Adicionar Convidado</button>
+			</form>
+		</div>
+	</div>
+	 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>
