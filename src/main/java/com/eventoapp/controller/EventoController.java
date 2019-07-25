@@ -47,21 +47,29 @@ public class EventoController {
     @RequestMapping(value = "/evento/detalhes/{id}")
     public ModelAndView detalhesEvento(@PathVariable("id") long id) {
     	ModelAndView mv = new ModelAndView();
-    	Evento Evento = eventoRepository.findById(id);
+    	Evento evento = eventoRepository.findById(id);
     	mv.setViewName("evento/detalhesEvento");
-    	mv.addObject("evento", Evento);
+    	mv.addObject("evento", evento);
+    	Iterable<Convidado> convidados = convidadoRepository.findByEvento(evento);
+    	mv.addObject("convidados", convidados);
     	return mv;
     }
-    
-    @RequestMapping(value = "/evento/detalhes/{id}", method = RequestMethod.POST)
-    public ModelAndView detalhesEventoPost(@PathVariable("id") long id, Convidado convidado) {
+    @RequestMapping(value = "/convidado/adicionar/{id}")
+    public ModelAndView adicionarConvidado(@PathVariable("id") long id) {
+    	ModelAndView mv = new ModelAndView();
+    	Evento evento = eventoRepository.findById(id);
+    	mv.setViewName("evento/AdicionarConvidado");
+    	mv.addObject("evento", evento);
+    	return mv;
+    }
+    @RequestMapping(value = "/convidado/adicionar/{id}", method = RequestMethod.POST)
+    public ModelAndView adicionarConvidado(@PathVariable("id") long id, Convidado convidado) {
     	ModelAndView mv = new ModelAndView();
     	Evento evento = eventoRepository.findById(id);
     	convidado.setEvento(evento);
     	convidadoRepository.save(convidado);
-    	mv.setViewName("redirect:/listarEventos");
+    	mv.setViewName("redirect:/evento/detalhes/{id}");
     	return mv;
     }
-    
     
 }
