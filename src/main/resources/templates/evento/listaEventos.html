@@ -13,9 +13,10 @@
 </head>
 <body>
 	<nav th:replace="fragmentos/fragmentos :: cabecalho"></nav>
+	
 	<div class="container"> 
-		<h1>Lista de Eventos</h1>
-		<h3><a class="waves-effect waves-light btn" href="/cadastrarEvento"><i class="material-icons left">add_circle</i>Cadastrar Evento</a></h3>
+	<h1>Lista de Eventos</h1>
+	<h3><a class="waves-effect waves-light btn" href="/cadastrarEvento"><i class="material-icons left">add_circle</i>Cadastrar Evento</a></h3>
 		<table>
 			<thead>
 				<tr>
@@ -23,6 +24,7 @@
 					<th>Local</th>
 					<th>Data</th>
 					<th>Horario</th>
+					<th>Deletar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -31,6 +33,8 @@
 					<td><span th:text="${evento.local}"></span></td>
 					<td><span th:text="${evento.data}"></span></td>
 					<td><span th:text="${evento.horario}"></span></td>
+					<td><a class="waves-effect waves-light btn-small" th:href="@{/evento/deletar/{id}(id=${evento.id})}"><i class="material-icons left">delete
+					</i></a></td>
 				</tr>
 			</tbody>
 		</table>

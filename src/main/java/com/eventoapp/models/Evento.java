@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,9 +27,13 @@ public class Evento {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "evento_id")
 	private long id;
+	@NotEmpty
 	private String nome;
+	@NotEmpty
     private String local;
+	@NotEmpty
     private String data;
+	@NotEmpty
     private String horario;
     @OneToMany(mappedBy = "evento", fetch = FetchType.EAGER)
     private List<Convidado> convidado;

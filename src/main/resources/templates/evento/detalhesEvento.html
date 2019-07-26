@@ -9,33 +9,38 @@
 </head>
 <body>
 	<nav th:replace="fragmentos/fragmentos :: cabecalho"></nav>
+	
 	<div class="container"> 
 		<h1>Detalhes Evento</h1>
 			<div class="row">
-				<p><spam th:text="${evento.nome}"></spam></p>
-				<p><spam th:text="${evento.local}"></spam></p>
-				<p><spam th:text="${evento.data}"></spam></p>
-				<p><spam th:text="${evento.horario}"></spam></p>
+				<p>Nome: <spam th:text="${evento.nome}"></spam></p>
+				<p>Local: <spam th:text="${evento.local}"></spam></p>
+				<p>Data: <spam th:text="${evento.data}"></spam></p>
+				<p>Horario: <spam th:text="${evento.horario}"></spam></p>
 			</div>
 		<h3><a class="btn waves-effect waves-teal" th:href="@{/convidado/adicionar/{id}(id=${evento.id})}"><i class="material-icons left">add</i>Adiconar convidado</a></h3>
-			<!-- <form method="post">
-				Nome:<input type="text" value="" name="nomeConvidado"/>
-				Rg:<input type="text" value="" name= "rg"/>
-				<button class="btn waves-effect waves-light" type="submit">Adicionar Convidado</button>
-			</form> -->
-		
 	</div>
 	
 	<div class="container" >
 		<h5>Lista de convidados:</h5>
-		<div class="row" th:each="convidado : ${convidados}">
-			<div class="input-field col s6">
-				<p><spam th:text="${convidado.nomeConvidado}"></spam>/</p>
-			</div>
-			<div class="input-field col s3">
-				<p><spam th:text="${convidado.rg}"></spam>/</p>
-			</div>
-		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Nome convidado</th>
+					<th>RG</th>
+					<th>Deletar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="convidado : ${convidados}">
+					<td><spam th:text="${convidado.nomeConvidado}"></spam></td>
+					<td><spam th:text="${convidado.rg}"></spam></td>
+					<td><a class="waves-effect waves-light btn-small" th:href="@{/convidado/deletar/{id}(id=${convidado.id})}"><i class="material-icons left">delete
+					</i></a></td>
+				</tr>
+				
+			</tbody>
+		</table>
 	</div>
 	 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>

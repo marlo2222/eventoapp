@@ -12,14 +12,16 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<!-- cabeçalho -->
 	 <nav th:fragment="cabecalho">
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Logo</a>
+      <a href="#" class="brand-logo">Lista de eventos</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
         <li><a href="/listarEventos">Eventos</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
       </ul>
     </div>
   </nav>
+  <div class=" alert alert-sucess alert-dismissible" role="alert" th:if="${not #strings.isEmpty(mensagem)}" th:fragment="validacao">
+  	<span th:text="${mensagem}"></span>
+  </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>

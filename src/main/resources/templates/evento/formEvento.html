@@ -9,24 +9,29 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-        <form class="container" method="post">
-        <h1>Cadastro de eventos</h1>
-            <label>Nome</label><input type="text" value="" name="nome">
-      		<div class="row">
-            	<div class="input-field col s6">
-            		<label>Local</label><input type="text" value="" name="local">
-        		</div>
-        		<div class="input-field col s3">
-        			<label>Data</label><input id="beginDate" type="date" class="datepicker" name="data">
-            	</div>
-            	<div class="input-field col s3">
-            		<label>Horario</label><input type="text" value="" name="horario">
+	<nav th:replace="fragmentos/fragmentos :: cabecalho"></nav>
+	
+	<div class="container">
+		<h1>Cadastro de eventos</h1>
+		<div th:replace="fragmentos/fragmentos :: validacao"></div>
+        	<form method="post">
+        				Nome:<input type="text" value="" name="nome">
+      			<div class="row">
+            		<div class="input-field col s6">
+            			Local:<input type="text" value="" name="local">
+        			</div>
+        			<div class="input-field col s3">
+        				Data:<input id="beginDate" type="date" class="datepicker" name="data">
+            		</div>
+            		<div class="input-field col s3">
+            			Horario:<input type="time" value="" name="horario">
+					</div>
 				</div>
-			</div>
-			<button class="btn waves-effect waves-light" type="submit" name="action">Salvar
-    		<i class="material-icons right">send</i>
-  			</button>
-        </form>
+				<button class="btn waves-effect waves-light" type="submit" name="action">Salvar
+    				<i class="material-icons right">send</i>
+  				</button>
+        	</form>
+    </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>

@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Convidado {
 	
@@ -18,9 +20,14 @@ public class Convidado {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id")
 	private long id;
+	@NotEmpty
 	private String rg;
+	@NotEmpty
 	private String nomeConvidado;
 	
+	public long getId() {
+		return id;
+	}
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "evento_id")
 	private Evento evento;
